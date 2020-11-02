@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%=title %></title>
+  <link rel="stylesheet" href="/stylesheets/top.css">
+  <link rel="icon" href="/images/favicon.ico">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><%=title %></h1>
+    </div>
+  </header>
+
+  <section class="search-container">
+    <div>
+      <form action=<%= top %> method="post">
+      <input type="search" placeholder="検索語を入れてください">
+      <button>検索</button>
+    </div>
+  </section>
+
+  <section class="all">
+    <div>
+      <a href=<%= all %>>図書一覧</a>
+    </div>
+  </section>
+
+  <section class="welcome">
+    <div>
+      <p>library of computer science</p>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <p><%= libraryName %></p>
+    </div>
+  </footer>
+
+</body>
+</html>

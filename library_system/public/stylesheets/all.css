@@ -1,0 +1,30 @@
+p {
+  margin: 0;
+}
+
+.top {
+  height: 50px;
+  background-color: #A9A9A9;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.top > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.output {
+  margin: 0;
+  height: 550px;
+  background-color: #A9A9A9;
+}
+
+.output p {
+  text-align: center;
+}
+
+footer p {
+ text-align: center;
+}

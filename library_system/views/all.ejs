@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%=title %></title>
+  <link rel="stylesheet" href="/stylesheets/all.css">
+  <link rel="icon" href="/images/favicon.ico">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><%=title %></h1>
+    </div>
+  </header>
+
+  <section class="top">
+    <div>
+      <div><a href=<%= top %>>Topへ戻る</a></div>
+    </div>
+  </section>
+
+  <section class="output">
+    <div>
+      <p>一覧の表示</p>
+      <table>
+        <% for (let i = 0; i < books.length; i++) { %>
+          <tr>
+            <td><%= books[i].id %></td>
+            <td><%= books[i].title %></td>
+            <td><%= books[i].author %></td>
+            <td><%= books[i].genre %></td>
+            <td><%= books[i].hight %></td>
+            <td><%= books[i].publisher %></td>
+          </tr>
+        <% } %>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <p><%= libraryName %></p>
+    </div>
+  </footer>
+
+</body>
+</html>
