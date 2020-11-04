@@ -10,6 +10,9 @@ const usersRouter = require('./routes/users');
 const allRouter = require('./routes/all');
 
 let settings = require('./settings');
+let db = require('./db');
+
+let mysql = require("mysql2");
 
 const app = express();
 
@@ -47,6 +50,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+db.connection.connect();
 
 app.listen(settings.server_port, settings.server_host)
 

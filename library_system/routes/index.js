@@ -8,7 +8,7 @@ let settings = require('../settings');
 router.get('/', function(req, res, next) {
   res.render('index', {
     title: settings.title,
-    top: settings.top,
+    index: settings.index,
     all: settings.all,
     libraryName: settings.libraryName
   });

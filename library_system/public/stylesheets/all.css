@@ -3,18 +3,25 @@ p {
 }
 
 table {
+  margin-top: 24px;
+  margin: 30px;
   display: flex;
   justify-content: center;
+  border-collapse: collapse;
 }
 
-.top {
+td {
+  border: 1px solid #333;
+}
+
+.index {
   height: 50px;
   background-color: #A9A9A9;
   display: flex;
   justify-content: flex-end;
 }
 
-.top > div {
+.index > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,7 +29,7 @@ table {
 
 .output {
   margin: 0;
-  height: 550px;
+  height: 6000px;
   background-color: #A9A9A9;
 }
 

@@ -2,10 +2,18 @@ p {
   margin: 0;
 }
 
+section > div {
+  margin-left: 12px;
+}
+
 .search-container {
   margin: 0;
   height: 120px;
   background-color: #A9A9A9;
+}
+
+.search-container > div {
+  padding-top: 12px;
 }
 
 .all {
