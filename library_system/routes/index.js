@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
     title: settings.title,
     index: settings.index,
     all: settings.all,
+    result: settings.result,
     libraryName: settings.libraryName
   });
 });
