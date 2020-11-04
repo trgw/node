@@ -24,14 +24,14 @@
     <div>
       <p>一覧の表示</p>
       <table>
-        <% for (let i = 0; i < books.length; i++) { %>
+        <% for (let i = 0; i < content.length; i++) { %>
           <tr>
-            <td><%= books[i].id %></td>
-            <td><%= books[i].title %></td>
-            <td><%= books[i].author %></td>
-            <td><%= books[i].genre %></td>
-            <td><%= books[i].hight %></td>
-            <td><%= books[i].publisher %></td>
+            <td><%= content[i].id %></td>
+            <td><%= content[i].title %></td>
+            <td><%= content[i].author %></td>
+            <td><%= content[i].genre %></td>
+            <td><%= content[i].height %></td>
+            <td><%= content[i].publisher %></td>
           </tr>
         <% } %>
       </table>
