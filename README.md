@@ -2,6 +2,6 @@
 
 1. delete folder: node_modules & file: package-lock.json
 
-2. install nodejs, npm(cmd: npm install), express(using ejs as a view engine: express --view=ejs [foldername])
+2. install nodejs, npm(cmd: npm install), mysql2 of npm (cmd: npm install mysql2)
 
-3. change settings.js (server_host, server_port etc)
+3. change settings.js (server_host, server_port etc), host, user and etc. of mysql.
