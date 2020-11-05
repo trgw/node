@@ -24,6 +24,14 @@
     <div>
       <p>一覧</p>
       <table>
+        <tr class="column">
+          <td>id</td>
+          <td>title</td>
+          <td>author</td>
+          <td>genre</td>
+          <td>height</td>
+          <td>publisher</td>
+        </tr>
         <% for (let i = 0; i < content.length; i++) { %>
           <tr>
             <td><%= content[i].id %></td>

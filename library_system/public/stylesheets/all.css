@@ -14,7 +14,12 @@ td {
   border: 1px solid #333;
 }
 
+.column {
+  border-bottom: 2px solid #333;
+}
+
 .index {
+  padding-right: 20px;
   height: 50px;
   background-color: #A9A9A9;
   display: flex;
