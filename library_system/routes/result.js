@@ -17,11 +17,12 @@ let db = require('../db');
 //   });
 // });
 
-// 検索ボタンを押したら打ち込んだら get で文字列と完全一致する要素（title, author, genre）をすべて表示
+// 検索ボタンを押したら get で文字列と完全一致する要素（title, author, genre, publisher）をすべて表示
 router.get('/', function(req, res, next) {
   const search_string = req.body.search_string;
   db.connection.query(
-    ('SELECT * FROM books WHERE `title` = "Mossad" OR `author` = "Mossad" OR `genre` = "Mossad" OR `publisher` = "Mossad";'
+    ('SELECT * FROM books WHERE `title` = "?" OR `author` = "?" OR `genre` = "?" OR `publisher` = "?";',
+    search_string, search_string, search_string, search_string
     ), function (err, rows, fields) {
       if (err) {
         throw err;
@@ -42,7 +43,7 @@ router.get('/', function(req, res, next) {
 // router.post('/', function(req, res, next) {
 //   const search_string = req.body.search_string;
 //   db.connection.query(
-//     ('SELECT * FROM books WHERE `title` = "Mossad" OR `author` = "Mossad" OR `genre` = "Mossad" OR `publisher` = "Mossad";',
+//     ('SELECT * FROM books WHERE `title` = "?" OR `author` = "?" OR `genre` = "?" OR `publisher` = "?";',
 //     search_string, search_string, search_string, search_string
 //     ), function (err, rows, fields) {
 //       if (err) {
