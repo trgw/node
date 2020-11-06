@@ -16,11 +16,8 @@
 
   <section class="search-container">
     <div>
-      <form action=<%= result %> method="get">
-        <p>
-          <label for="search_string"></label>
-          <input type="search" placeholder="検索語を入れてください">
-        </p>
+      <form method="post" action=<%= result %>>
+        <input type="search" placeholder="検索語を入れてください" name="search_input" id="search_string">
         <button onclick="location.href='http://192.168.33.13:1337/result'">検索</button>
       </form>
     </div>
