@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
   res.render('index', {
     title: settings.title,
     index: settings.index,
-    all: settings.all,
+    books: settings.books,
+    users: settings.users,
     result: settings.result,
     libraryName: settings.libraryName
   });

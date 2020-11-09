@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%=title %></title>
-  <link rel="stylesheet" href="/stylesheets/all.css">
+  <link rel="stylesheet" href="/stylesheets/books.css">
   <link rel="icon" href="/images/favicon.ico">
 </head>
 <body>
@@ -14,15 +14,20 @@
     </div>
   </header>
 
-  <section class="index">
+  <section class="link">
     <div>
-      <div><a href=<%= index %>>Topへ戻る</a></div>
+      <div>
+        <div><a href=<%= index %>>Topへ戻る</a></div>
+      </div>
+      <div>
+        <div><a href=<%= users %>>ユーザ一覧</a></div>
+      </div>
     </div>
   </section>
 
   <section class="output">
     <div>
-      <p>一覧</p>
+      <p>図書一覧</p>
       <table>
         <tr class="column">
           <td>id</td>

@@ -30,7 +30,8 @@ router.post('/', function(req, res, next) {
       res.render('result', {
         title: settings.title,
         index: settings.index,
-        all: settings.all,
+        books: settings.books,
+        users: settings.users,
         libraryName: settings.libraryName,
         content: rows
       });
