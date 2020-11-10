@@ -8,6 +8,7 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const booksRouter = require('./routes/books');
 const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/history');
 const resultRouter = require('./routes/result');
 
 let settings = require('./settings');
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/books', booksRouter);
 app.use('/users', usersRouter);
+app.use('/history', historyRouter);
 app.use('/result', resultRouter);
 //app.use('/db', dbRouter);
 

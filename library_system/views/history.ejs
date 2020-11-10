@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%=title %></title>
+  <link rel="stylesheet" href="/stylesheets/history.css">
+  <link rel="icon" href="/images/favicon.ico">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><%=title %></h1>
+    </div>
+  </header>
+
+  <section class="link">
+    <div>
+      <div>
+        <div><a href=<%= index %>>Topへ戻る</a></div>
+      </div>
+      <div>
+        <div><a href=<%= books %>>図書一覧</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="output">
+    <div>
+      <p>ユーザ一覧</p>
+      <table>
+        <tr class="column">
+          <td>id</td>
+          <td>companyName</td>
+          <td>contactName</td>
+          <td>occupation</td>
+        </tr>
+        <% for (let i = 0; i < content.length; i++) { %>
+          <tr>
+            <td><%= content[i].id %></td>
+            <td><%= content[i].companyName %></td>
+            <td><%= content[i].contactName %></td>
+            <td><%= content[i].occupation %></td>
+          </tr>
+        <% } %>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <p><%= libraryName %></p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -24,26 +24,29 @@
     <div>
       <div>
         <p>result</p>
-        <table>
-          <tr class="column">
-            <td>id</td>
-            <td>title</td>
-            <td>author</td>
-            <td>genre</td>
-            <td>height</td>
-            <td>publisher</td>
-          </tr>
-          <% for (let i = 0; i < content.length; i++) { %>
-            <tr>
-              <td><%= content[i].id %></td>
-              <td><%= content[i].title %></td>
-              <td><%= content[i].author %></td>
-              <td><%= content[i].genre %></td>
-              <td><%= content[i].height %></td>
-              <td><%= content[i].publisher %></td>
+        <div>
+          <table>
+            <tr class="column">
+              <td>id</td>
+              <td>title</td>
+              <td>author</td>
+              <td>genre</td>
+              <td>height</td>
+              <td>publisher</td>
             </tr>
-          <% } %>
-        </table>
+            <% for (let i = 0; i < content.length; i++) { %>
+              <tr>
+                <td><%= content[i].id %></td>
+                <td><%= content[i].title %></td>
+                <td><%= content[i].author %></td>
+                <td><%= content[i].genre %></td>
+                <td><%= content[i].height %></td>
+                <td><%= content[i].publisher %></td>
+              </tr>
+            <% } %>
+          </table>
+          <botton><%= %></botton>
+        </div>
       </div>
     </div>
   </section>

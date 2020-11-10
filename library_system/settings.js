@@ -4,5 +4,6 @@ exports.title = '図書検索';
 exports.index = "http://192.168.33.13:1337";
 exports.books = this.index + "/books";
 exports.users = this.index + "/users";
+exports.history = this.index + "/history";
 exports.result = this.index + "/result";
 exports.libraryName = 'ubiquitous library';

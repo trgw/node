@@ -17,6 +17,7 @@ router.get('/', function(req, res, next) {
         index: settings.index,
         books: settings.books,
         users: settings.users,
+        history: settings.history,
         libraryName: settings.libraryName,
         content: rows
       });
