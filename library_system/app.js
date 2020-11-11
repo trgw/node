@@ -5,10 +5,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 
+const loginRouter = require('./routes/login');
 const indexRouter = require('./routes/index');
 const booksRouter = require('./routes/books');
 const usersRouter = require('./routes/users');
-const usersRouter = require('./routes/history');
+const historyRouter = require('./routes/history');
 const resultRouter = require('./routes/result');
 
 let settings = require('./settings');
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: false })); // url-encoded
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/login', loginRouter);
 app.use('/', indexRouter);
 app.use('/books', booksRouter);
 app.use('/users', usersRouter);

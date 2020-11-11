@@ -18,15 +18,11 @@ let db = require('../db');
 // });
 
 router.post('/', function(req, res, next) {
-  const search_string = req.body.search_input;
-  console.log(req.body.search_input);
-  db.connection.query('SELECT * FROM books WHERE title = ?', [search_string], function (err, rows, fields) {
+  const search_string = req.body.search_name;
+  db.connection.query('SELECT * FROM books WHERE title = ?', [search_id], function (err, rows, fields) {
     if (err) {
       throw err;
     } else {
-
-      console.log(rows);
-
       res.render('result', {
         title: settings.title,
         index: settings.index,

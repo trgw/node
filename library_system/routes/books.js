@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
     if (err) {
       throw err;
     } else {
+      console.log(rows);
       res.render('books', {
         title: settings.title,
         index: settings.index,

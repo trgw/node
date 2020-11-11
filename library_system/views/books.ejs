@@ -36,6 +36,7 @@
           <td>genre</td>
           <td>height</td>
           <td>publisher</td>
+          <td>borrow</td>
         </tr>
         <% for (let i = 0; i < content.length; i++) { %>
           <tr>
@@ -45,6 +46,17 @@
             <td><%= content[i].genre %></td>
             <td><%= content[i].height %></td>
             <td><%= content[i].publisher %></td>
+            <% if (content[i].info === "returned") { %>
+            <td class="borrow">
+              <div>
+                <form method="post" action=<%= result %>>
+                  <button onclick="location.href='http://192.168.33.13:1337'" name="borrow_name" id="borrow_id">borrow</button>
+                </form>
+              </div>
+            </td>
+            <% } else { %>
+            <td><%= content[i].info %></td>
+            <% } %>
           </tr>
         <% } %>
       </table>
