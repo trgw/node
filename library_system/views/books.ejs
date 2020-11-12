@@ -49,8 +49,8 @@
             <% if (content[i].info === "returned") { %>
             <td class="borrow">
               <div>
-                <form method="post" action=<%= result %>>
-                  <button onclick="location.href='http://192.168.33.13:1337'" name="borrow_name" id="borrow_id">borrow</button>
+                <form method="post" action=<%= index %>>
+                  <button onclick="location.href='<%= index %>'" name="borrow_name" id="borrow_id">borrow</button>
                 </form>
               </div>
             </td>

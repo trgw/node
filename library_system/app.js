@@ -17,6 +17,8 @@ let db = require('./db');
 
 let mysql = require("mysql2");
 
+let login_name = null;
+
 const app = express();
 
 // view engine setup

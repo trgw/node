@@ -12,13 +12,14 @@ router.get('/', function(req, res, next) {
     if (err) {
       throw err;
     } else {
-      console.log(rows);
       res.render('books', {
         title: settings.title,
+        login: settings.login,
         index: settings.index,
         books: settings.books,
         users: settings.users,
         history: settings.history,
+        result: settings.result,
         libraryName: settings.libraryName,
         content: rows
       });

@@ -16,14 +16,15 @@
 
   <section class="welcome">
     <div>
-      <p>welcomw to library of 211 books</p>
+      <p>welcome to library of 211 books</p>
     </div>
   </section>
 
   <section class="enter_name">
     <div>
-      <form method="get" action=<%= index %>>
-        <input type="text" placeholder="enter login name" name="login_name" id="login_id">
+      <form method="post" action=<%= index %>>
+        <input type="text" placeholder="enter login name" name="input_login_name" id="input_login_id">
+        <button onclick="location.href='<%= index %>'">login</button>
       </form>
     </div>
   </section>
