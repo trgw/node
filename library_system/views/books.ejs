@@ -16,18 +16,13 @@
 
   <section class="link">
     <div>
-      <div>
-        <div><a href=<%= index %>>Topへ戻る</a></div>
-      </div>
-      <div>
-        <div><a href=<%= users %>>ユーザ一覧</a></div>
-      </div>
+      <div><a href=<%= index %>>back to the top page</a></div>
     </div>
   </section>
 
   <section class="output">
     <div>
-      <p>図書一覧</p>
+      <p>all books</p>
       <table>
         <tr class="column">
           <td>id</td>
@@ -49,8 +44,8 @@
             <% if (content[i].info === "returned") { %>
             <td class="borrow">
               <div>
-                <form method="post" action=<%= index %>>
-                  <button onclick="location.href='<%= index %>'" name="borrow_name" id="borrow_id">borrow</button>
+                <form method="post" id="book_id" action=<%= index %>>
+                  <button onclick="location.href='<%= index %>'" name="book_name" id="book_id" value="<%= content[i].id %>">borrow</button>
                 </form>
               </div>
             </td>

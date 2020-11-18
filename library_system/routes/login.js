@@ -8,6 +8,9 @@ let db = require('../db');
 
 
 router.get('/', function(req, res, next) {
+
+  
+
   res.render('login', {
     title: settings.title,
     login: settings.login,

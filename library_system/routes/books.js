@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 let settings = require('../settings');
+let index = require('./index');
 
 let db = require('../db');
 
@@ -21,6 +22,7 @@ router.get('/', function(req, res, next) {
         history: settings.history,
         result: settings.result,
         libraryName: settings.libraryName,
+        login_name: index.login_name,
         content: rows
       });
     }

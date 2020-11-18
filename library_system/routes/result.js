@@ -19,7 +19,7 @@ let db = require('../db');
 
 router.post('/', function(req, res, next) {
   const search_string = req.body.search_name;
-  db.connection.query('SELECT * FROM books WHERE title = ?', [search_id], function (err, rows, fields) {
+  db.connection.query('SELECT * FROM books WHERE title = ?', [search_string], function (err, rows, fields) {
     if (err) {
       throw err;
     } else {

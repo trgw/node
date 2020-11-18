@@ -6,9 +6,7 @@ let settings = require('../settings');
 
 let db = require('../db');
 
-let login_name = null;
-
-/* GET home page. */
+/* books page で back to the top page の link から, result page Topへ戻る */
 router.get('/', function(req, res, next) {
   res.render('index', {
     title: settings.title,
@@ -31,7 +29,14 @@ router.post('/', function(req, res, next) {
   let login_name = req.body.input_login_name;
   let borrow = req.body.borrow_name;
   //console.log(login_name);
-  if (/* from login page */ borrow === undefined) {
+
+  /* from login page */
+  if (req.body.book_name === undefined) {
+
+    console.log("第1の post に対する処理(login page からの処理)をしています");
+
+    exports.login_name = req.body.login_name;
+
     res.render('index', {
       title: settings.title,
       login: settings.login,
@@ -42,8 +47,15 @@ router.post('/', function(req, res, next) {
       result: settings.result,
       libraryName: settings.libraryName
     });
-  } else if (/* from books page */ borrow !== undefined ) {
-    db.connection.query('UPDATE books set user_info = ?', [borrow_id], function (err, rows, fields) { // ?:本来、ログインしているユーザの名前
+
+    /* from books page (borrow button)*/
+  } else if (req.body.book_name !== undefined ) {
+
+    console.log("第2の post に対する処理(books page の borrow button からの処理)をしています");
+
+    let book_id = Number(req.body.book_name);
+
+    db.connection.query('UPDATE books SET user_info = ?　where id = ?; UPDATE books SET info = "borrowed"', [this.login_name, book_id], function (err, rows, fields) { // ?:本来、ログインしているユーザの名前
       if (err) {
         throw err;
       } else {
@@ -72,8 +84,6 @@ router.post('/', function(req, res, next) {
       libraryName: settings.libraryName
     });
   }
-  console.log(login_name);
-  console.log(borrow);
 });
 
 
