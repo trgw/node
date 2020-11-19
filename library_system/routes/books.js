@@ -6,13 +6,19 @@ let index = require('./index');
 
 let db = require('../db');
 
-
+console.log('books page is here');
 
 router.get('/', function(req, res, next) {
   db.connection.query('SELECT * FROM books;', function (err, rows, fields) {
     if (err) {
       throw err;
     } else {
+
+      console.log('----- books page -----');
+      console.log('loginHasPassed: ' + loginHasPassed);
+      console.log('login_name: ' + login_name);
+      console.log('----- books page -----');
+
       res.render('books', {
         title: settings.title,
         login: settings.login,
@@ -22,7 +28,6 @@ router.get('/', function(req, res, next) {
         history: settings.history,
         result: settings.result,
         libraryName: settings.libraryName,
-        login_name: index.login_name,
         content: rows
       });
     }

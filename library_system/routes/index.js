@@ -3,8 +3,11 @@ const app = require('../app');
 var router = express.Router();
 
 let settings = require('../settings');
+let login = require('./login');
 
 let db = require('../db');
+
+console.log('index page is here');
 
 /* books page で back to the top page の link から, result page Topへ戻る */
 router.get('/', function(req, res, next) {
@@ -24,18 +27,26 @@ router.get('/', function(req, res, next) {
 
 
 router.post('/', function(req, res, next) {
-  console.log(req.body.input_login_name);
-  console.log(req.body.borrow_name);
-  let login_name = req.body.input_login_name;
+  console.log('req.body.input_login_name: ' + req.body.input_login_name);
+  console.log('req.body.borrow_name' + req.body.borrow_name);
+  //login_name = req.body.input_login_name;
   let borrow = req.body.borrow_name;
   //console.log(login_name);
 
   /* from login page */
   if (req.body.book_name === undefined) {
 
+    console.log('/----- index page -----');
     console.log("第1の post に対する処理(login page からの処理)をしています");
 
-    exports.login_name = req.body.login_name;
+    loginHasPassed = true;
+    console.log('loginHasPassed: ' + loginHasPassed);
+    login_name = req.body.input_login_name;
+    console.log('login_name: ' + login_name);
+
+    console.log('----- index page -----/');
+
+    //console.log('addend0:', 0);
 
     res.render('index', {
       title: settings.title,
@@ -49,13 +60,22 @@ router.post('/', function(req, res, next) {
     });
 
     /* from books page (borrow button)*/
-  } else if (req.body.book_name !== undefined ) {
+  } else if (req.body.book_name !== undefined) {
 
+    console.log('/----- index page -----');
     console.log("第2の post に対する処理(books page の borrow button からの処理)をしています");
 
-    let book_id = Number(req.body.book_name);
+    //const sql = "UPDATE `books` SET `user_info` = ? WHERE `id` = ?";
+    const sql = "UPDATE `books` SET `user_info` = ? WHERE `id` = ?; UPDATE `books` SET `info` = 'borrowed' where `id` = ?";
+    let book_id = parseInt(req.body.book_name);
+    console.log(req.body.book_name);
+    console.log(book_id);
+    console.log('login_name: ' + login_name);
+    //console.log(sql, [login_name, book_id]);
+    console.log('----- index page -----/');
 
-    db.connection.query('UPDATE books SET user_info = ?　where id = ?; UPDATE books SET info = "borrowed"', [this.login_name, book_id], function (err, rows, fields) { // ?:本来、ログインしているユーザの名前
+    //db.connection.query(sql, [login_name, book_id], function (err, rows, fields) {
+    db.connection.query(sql, [login_name, book_id, book_id], function (err, rows, fields) {
       if (err) {
         throw err;
       } else {

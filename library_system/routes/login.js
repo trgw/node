@@ -5,7 +5,9 @@ let settings = require('../settings');
 
 let db = require('../db');
 
+//exports.loginHasPassed = new Boolean(true);
 
+console.log('login page is here');
 
 router.get('/', function(req, res, next) {
 

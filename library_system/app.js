@@ -1,9 +1,11 @@
+
+console.log('the top of app.js');
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
 
 const loginRouter = require('./routes/login');
 const indexRouter = require('./routes/index');
@@ -17,13 +19,23 @@ let db = require('./db');
 
 let mysql = require("mysql2");
 
-//let login_name = null;
+let loginHasPassed = new Boolean(false);
+console.log('loginHasPassed: ' + loginHasPassed);
+if (loginHasPassed === false) {
+  let login_name;
+}
+let login_name;
+console.log('login_name: ' + login_name);
 
 const app = express();
+
+console.log('const, let done');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+console.log('app.set has done');
 
 // app.use: middleware を読み込んでいる. 先に書いたものが優先される.
 app.use(logger('dev')); // command line に log 表示.
@@ -59,8 +71,13 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+console.log('app.use has done');
+
 db.connection.connect();
+console.log('db.connection has done');
 
 app.listen(settings.server_port, settings.server_host)
+console.log('app.listen has done');
 
 module.exports = app;
+console.log('module.exports has done');

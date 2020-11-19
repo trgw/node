@@ -5,7 +5,7 @@ let settings = require('../settings');
 
 let db = require('../db');
 
-
+console.log('users page is here');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

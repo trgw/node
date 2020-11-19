@@ -5,7 +5,7 @@ let settings = require('../settings');
 
 let db = require('../db');
 
-
+console.log('history page is here');
 
 router.get('/', function(req, res, next) {
   db.connection.query('SELECT * FROM history;', function (err, rows, fields) {

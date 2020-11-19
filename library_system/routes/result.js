@@ -5,6 +5,7 @@ let settings = require('../settings');
 
 let db = require('../db');
 
+console.log('result page is here');
 
 // get で一応のページ
 // router.get('/', function(req, res, next) {
