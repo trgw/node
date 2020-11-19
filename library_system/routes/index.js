@@ -41,8 +41,8 @@ router.post('/', function(req, res, next) {
 
     loginHasPassed = true;
     console.log('loginHasPassed: ' + loginHasPassed);
-    login_name = req.body.input_login_name;
-    console.log('login_name: ' + login_name);
+    loginName = req.body.input_login_name;
+    console.log('loginName: ' + loginName);
 
     console.log('----- index page -----/');
 
@@ -70,12 +70,12 @@ router.post('/', function(req, res, next) {
     let book_id = parseInt(req.body.book_name);
     console.log(req.body.book_name);
     console.log(book_id);
-    console.log('login_name: ' + login_name);
+    console.log('loginName: ' + loginName);
     //console.log(sql, [login_name, book_id]);
     console.log('----- index page -----/');
 
     //db.connection.query(sql, [login_name, book_id], function (err, rows, fields) {
-    db.connection.query(sql, [login_name, book_id, book_id], function (err, rows, fields) {
+    db.connection.query(sql, [loginName, book_id, book_id], function (err, rows, fields) {
       if (err) {
         throw err;
       } else {

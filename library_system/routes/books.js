@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 
       console.log('----- books page -----');
       console.log('loginHasPassed: ' + loginHasPassed);
-      console.log('login_name: ' + login_name);
+      console.log('loginName: ' + loginName);
       console.log('----- books page -----');
 
       res.render('books', {

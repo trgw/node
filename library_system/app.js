@@ -21,11 +21,9 @@ let mysql = require("mysql2");
 
 let loginHasPassed = new Boolean(false);
 console.log('loginHasPassed: ' + loginHasPassed);
-if (loginHasPassed === false) {
-  let login_name;
-}
-let login_name;
-console.log('login_name: ' + login_name);
+
+let loginName;
+console.log('loginName: ' + loginName);
 
 const app = express();
 
