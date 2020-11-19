@@ -36,8 +36,9 @@ td {
 
 .output {
   margin: 0;
-  height: 6000px;
+  height: auto;
   background-color: #A9A9A9;
+  padding-bottom: 30px;
 }
 
 .output p {

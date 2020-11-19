@@ -25,6 +25,15 @@ section > div {
   justify-content: flex-end;
 }
 
+.history {
+  margin: 0;
+  padding-right: 20px;
+  height: 30px;
+  background-color: #A9A9A9;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .users {
   padding-top: 10px;
   margin: 0;

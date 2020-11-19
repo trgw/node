@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
     if (err) {
       throw err;
     } else {
-      res.render('hsitory', {
+      res.render('history', {
         title: settings.title,
         index: settings.index,
         books: settings.books,
