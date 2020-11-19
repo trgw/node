@@ -31,6 +31,7 @@
           <td>genre</td>
           <td>height</td>
           <td>publisher</td>
+          <td>see history</td>
           <td>borrow</td>
         </tr>
         <% for (let i = 0; i < content.length; i++) { %>
@@ -41,6 +42,13 @@
             <td><%= content[i].genre %></td>
             <td><%= content[i].height %></td>
             <td><%= content[i].publisher %></td>
+            <td class="history">
+              <div>
+                <form method="post" id="book_id" action=<%= history %>>
+                  <button onclick="location.href='<%= history %>'" name="book_name" id="book_id" value="<%= content[i].id %>">history</button>
+                </form>
+              </div>
+            </td>
             <% if (content[i].info === "returned") { %>
             <td class="borrow">
               <div>
