@@ -46,8 +46,12 @@ section > div {
 
 .welcome {
   margin: 0;
-  height:450px;
+  height:500px;
   background-color: #A9A9A9;
+}
+
+.welcome > div > div {
+  text-align: center;
 }
 
 footer p {
