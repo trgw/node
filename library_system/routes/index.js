@@ -3,7 +3,6 @@ const app = require('../app');
 var router = express.Router();
 
 let settings = require('../settings');
-let login = require('./login');
 
 let db = require('../db');
 
@@ -66,16 +65,16 @@ router.post('/', function(req, res, next) {
     console.log("第2の post に対する処理(books page の borrow button からの処理)をしています");
 
     //const sql = "UPDATE `books` SET `user_info` = ? WHERE `id` = ?";
-    const sql = "UPDATE `books` SET `user_info` = ? WHERE `id` = ?; UPDATE `books` SET `info` = 'borrowed' where `id` = ?";
-    let book_id = parseInt(req.body.book_name);
+    const sql = "UPDATE books SET user_info = ? WHERE id = ?; UPDATE books SET info = 'borrowed' where id = ?";
+    let bookId = parseInt(req.body.book_name);
     console.log(req.body.book_name);
-    console.log(book_id);
+    console.log(bookId);
     console.log('loginName: ' + loginName);
     //console.log(sql, [login_name, book_id]);
     console.log('----- index page -----/');
 
     //db.connection.query(sql, [login_name, book_id], function (err, rows, fields) {
-    db.connection.query(sql, [loginName, book_id, book_id], function (err, rows, fields) {
+    db.connection.query(sql, [loginName, bookId, bookId], function (err, rows, fields) {
       if (err) {
         throw err;
       } else {

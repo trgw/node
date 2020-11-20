@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
       throw err;
     } else {
 
-      console.log('----- books page -----');
+      console.log('/----- books page -----');
       console.log('loginHasPassed: ' + loginHasPassed);
       console.log('loginName: ' + loginName);
       console.log('----- books page -----');
