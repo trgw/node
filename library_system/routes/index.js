@@ -64,9 +64,21 @@ router.post('/', function(req, res, next) {
     console.log('/----- index page -----');
     console.log("第2の post に対する処理(books page の borrow button からの処理)をしています");
 
-    //const sql = "UPDATE `books` SET `user_info` = ? WHERE `id` = ?";
-    const sql = "UPDATE books SET user_info = ? WHERE id = ?; UPDATE books SET info = 'borrowed' where id = ?";
+    const sql0 = "UPDATE books SET user_info = ? WHERE id = ?";
+    const sql1 = "; UPDATE books SET info = 'borrowed' where id = ?";
+    const sql2 = "; INSERT history VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)"; // history table の編集
     let bookId = parseInt(req.body.book_name);
+    //let historyId = db.hidtory.(last history_id)+1
+    // bookId
+    //let bookTitle =
+    //let userId =
+    let userName = loginName;
+    let borrowDatetime = new Date();
+    let formattedBorrowDatetime = borrowDatetime.toFormat("YYYY-MM-DD-HH24-MI-SS")
+    console.log(formattedBorrowDatetime);
+    let returnDatetime = NULL;
+    let deadline = NULL;
+    let info = 'borrowed';
     console.log(req.body.book_name);
     console.log(bookId);
     console.log('loginName: ' + loginName);
@@ -74,7 +86,7 @@ router.post('/', function(req, res, next) {
     console.log('----- index page -----/');
 
     //db.connection.query(sql, [login_name, book_id], function (err, rows, fields) {
-    db.connection.query(sql, [loginName, bookId, bookId], function (err, rows, fields) {
+    db.connection.query(sql0 + sql1, [loginName, bookId, bookId, /* sql2*/], function (err, rows, fields) {
       if (err) {
         throw err;
       } else {
