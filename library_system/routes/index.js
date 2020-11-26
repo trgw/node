@@ -70,13 +70,49 @@ router.post('/', function(req, res, next) {
     let bookId = parseInt(req.body.book_name);
 
     // sql2
-    db.connection.query(/* query文 */, [/*?*/], function(err, result, fields) {
+    db.connection.query('SELECT * FROM history ORDER BY history_id DESC LIMIT 1', function(err, historyRow, fields) {
+      if (err) {
+        throw err;
+      } else {
+        //↓let historyId = db.hidtory.(last history_id)+1
+        let historyId = historyRow.history_id + 1;
+        console.log(historyId);
+        // bookId
+        ///let bookTitle = booksRow.title;
+        ///let userId =
+        let userName = loginName;
+        let borrowDatetime = new Date();
+        let formattedBorrowDatetime = borrowDatetime.toFormat("YYYY-MM-DD-HH24-MI-SS")
+        console.log(formattedBorrowDatetime);
+        let returnDatetime = NULL;
+        let deadline = NULL;
+        let info = 'borrowed';
+      }
+    });
+    db.connection.query('SELECT * FROM books WHERE id = ?', [bookId], function(err, booksRow, fields) {
       if (err) {
         throw err;
       } else {
         //let historyId = db.hidtory.(last history_id)+1
         // bookId
-        //let bookTitle =
+        let bookTitle = booksRow.title;
+        //let userId =
+        let userName = loginName;
+        let borrowDatetime = new Date();
+        let formattedBorrowDatetime = borrowDatetime.toFormat("YYYY-MM-DD-HH24-MI-SS")
+        console.log(formattedBorrowDatetime);
+        let returnDatetime = NULL;
+        let deadline = NULL;
+        let info = 'borrowed';
+      }
+    });
+    db.connection.query('SELECT * FROM books WHERE id = ?', [bookId], function(err, r_usersRow, fields) {
+      if (err) {
+        throw err;
+      } else {
+        //let historyId = db.hidtory.(last history_id)+1
+        // bookId
+        let bookTitle = booksRow.title;
         //let userId =
         let userName = loginName;
         let borrowDatetime = new Date();
@@ -95,6 +131,7 @@ router.post('/', function(req, res, next) {
     console.log('----- index page -----/');
 
     //db.connection.query(sql, [login_name, book_id], function (err, rows, fields) {
+    // long. fix me
     db.connection.query(sql0 + sql1 + sql2, [/* sql0 */loginName, bookId, /* sql1 */bookId, /* sql2*/historyId, bookId, bookTitle, userId, userName, formattedBorrowDatetime, returnDatetime, deadline, info], function (err, rows, fields) {
       if (err) {
         throw err;
