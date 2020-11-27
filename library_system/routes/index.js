@@ -58,7 +58,7 @@ router.post('/', function(req, res, next) {
     console.log("第2の post に対する処理(books page の borrow button からの処理)をしています");
 
     const sql0 = "UPDATE books SET user_info = ? WHERE id = ?";
-    const sql1 = "; UPDATE books SET info = 'borrowed' where id = ?";
+    const sql1 = "; UPDATE books SET info = 'borrowed' WHERE id = ?";
     const sql2 = "; INSERT INTO history (history_id, book_id, book_title, user_id, user_name, borrow_datetime, info) VALUES (?, ?, ?, ?, ?, ?, ?)"; // history table の編集
 
     let historyId;

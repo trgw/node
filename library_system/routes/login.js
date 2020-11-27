@@ -6,17 +6,21 @@ let settings = require('../settings');
 
 let db = require('../db');
 
-//exports.loginHasPassed = new Boolean(true);
-
-console.log('login page is here');
+console.log('-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-');
+let loginHasPassed = new Boolean(false);
+console.log('loginHasPassed: ' + loginHasPassed);
+console.log('this.loginHasPassed: ' + this.loginHasPassed);
+let loginName;
+console.log('loginName: ' + loginName);
+console.log('-*-*-*- login page is here -*-*-*-');
 
 router.get('/', function(req, res, next) {
 
   console.log('/----- login page -----')
-  let HasPassed = new Boolean(false);
-  console.log('this.HasPassed: ' + this.HasPassed);
-  module.exports.Name;
-  console.log('login.Name: ' + this.Name);
+  console.log('loginHasPassed: ' + loginHasPassed);
+  console.log('this.loginHasPassed: ' + this.loginHasPassed);
+  console.log('loginName: ' + loginName);
+  console.log('this.loginName: ' + this.loginName);
   console.log('----- login page -----/')
 
   res.render('login', {
@@ -31,4 +35,28 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* module.exports = router; が後
+module.exports.HasPassed = loginHasPassed;
+console.log(module.exports);
+module.exports.Name = loginName;
+console.log(module.exports);
 module.exports = router;
+console.log(module.exports);
+*/
+
+/*
+module.exports = router;
+console.log(module.exports);
+console.log('-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-');
+module.exports.HasPassed = loginHasPassed;
+console.log(module.exports);
+console.log('-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-');
+module.exports.Name = loginName;
+console.log(module.exports);
+*/
+
+module.exports = router;
+module.exports.HasPassed = loginHasPassed;
+module.exports.Name = loginName;
+console.log(module.exports);
+console.log('-*-*- bye (login page -*-*-');
