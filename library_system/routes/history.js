@@ -28,9 +28,9 @@ router.get('/', function(req, res, next) {
 /* book のデータから */
 router.post('/', function(req, res, next) {
 
-  let book_id = parseInt(req.body.book_name);
+  let bookId = parseInt(req.body.book_name);
 
-  db.connection.query('SELECT * FROM history WHERE book_id = ?', [book_id], function(err, rows, fields) {
+  db.connection.query('SELECT * FROM history WHERE book_id = ?', [bookId], function(err, rows, fields) {
     if (err) {
       throw err;
     } else {

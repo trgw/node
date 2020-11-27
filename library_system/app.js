@@ -17,14 +17,7 @@ const resultRouter = require('./routes/result');
 let settings = require('./settings');
 let db = require('./db');
 
-let mysql = require("mysql2");
-let dateUtils = require("date-utils");
-
-let loginHasPassed = new Boolean(false);
-console.log('loginHasPassed: ' + loginHasPassed);
-
-let loginName;
-console.log('loginName: ' + loginName);
+const dateUtils = require("date-utils");
 
 const app = express();
 

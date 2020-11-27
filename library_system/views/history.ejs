@@ -36,8 +36,8 @@
           <td>user_id</td>
           <td>user_name</td>
           <td>borrow_datetime</td>
-          <td>return_datetime</td>
           <td>deadline</td>
+          <td>return_datetime</td>
           <td>info</td>
         </tr>
         <% for (let i = 0; i < content.length; i++) { %>
@@ -48,8 +48,8 @@
             <td><%= content[i].user_id %></td>
             <td><%= content[i].user_name %></td>
             <td><%= content[i].borrow_datetime %></td>
-            <td><%= content[i].return_datetime %></td>
             <td><%= content[i].deadline %></td>
+            <td><%= content[i].return_datetime %></td>
             <td><%= content[i].info %></td>
           </tr>
         <% } %>

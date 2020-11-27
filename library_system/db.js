@@ -1,4 +1,4 @@
-let mysql = require("mysql2");
+const mysql = require("mysql2");
 
 exports.connection = mysql.createConnection({
   host: '192.168.1.182',
