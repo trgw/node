@@ -13,6 +13,7 @@ const booksRouter = require('./routes/books');
 const usersRouter = require('./routes/users');
 const historyRouter = require('./routes/history');
 const resultRouter = require('./routes/result');
+const returnRouter = require('./routes/return');
 
 let settings = require('./settings');
 let db = require('./db');
@@ -45,6 +46,7 @@ app.use('/books', booksRouter);
 app.use('/users', usersRouter);
 app.use('/history', historyRouter);
 app.use('/result', resultRouter);
+app.use('/return', returnRouter);
 //app.use('/db', dbRouter);
 
 // catch 404 and forward to error handler

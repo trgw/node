@@ -19,9 +19,7 @@ router.get('/', function(req, res, next) {
 
   console.log('/----- login page -----')
   console.log('loginHasPassed: ' + loginHasPassed);
-  console.log('this.loginHasPassed: ' + this.loginHasPassed);
   console.log('loginName: ' + loginName);
-  console.log('this.loginName: ' + this.loginName);
   console.log('----- login page -----/')
 
   res.render('login', {
@@ -32,6 +30,7 @@ router.get('/', function(req, res, next) {
     users: settings.users,
     history: settings.history,
     result: settings.result,
+    return: settings.return,
     libraryName: settings.libraryName,
   });
 });

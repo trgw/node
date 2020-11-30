@@ -18,6 +18,7 @@ router.get('/', function(req, res, next) {
     users: settings.users,
     history: settings.history,
     result: settings.result,
+    return: settings.return,
     libraryName: settings.libraryName
   });
 });
@@ -46,6 +47,7 @@ router.post('/', function(req, res, next) {
       users: settings.users,
       history: settings.history,
       result: settings.result,
+      return: settings.return,
       libraryName: settings.libraryName
     });
 
@@ -58,7 +60,7 @@ router.post('/', function(req, res, next) {
     console.log('login.HasPassed: ' + login.HasPassed);
 
     const sql0 = "UPDATE books SET user_id = ? WHERE id = ?";
-    const sql1 = "UPDATE books SET user_name = ? WHERE id = ?";
+    const sql1 = "; UPDATE books SET user_name = ? WHERE id = ?";
     const sql2 = "; UPDATE books SET info = 'borrowed' WHERE id = ?";
     const sql3 = "; INSERT INTO history (history_id, book_id, book_title, user_id, user_name, borrow_datetime, deadline, info) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"; // history table の編集
 
@@ -141,6 +143,7 @@ router.post('/', function(req, res, next) {
                       users: settings.users,
                       history: settings.history,
                       result: settings.result,
+                      return: settings.return,
                       libraryName: settings.libraryName
                     });
                   }
