@@ -12,6 +12,7 @@ console.log('loginHasPassed: ' + loginHasPassed);
 console.log('this.loginHasPassed: ' + this.loginHasPassed);
 let loginName;
 console.log('loginName: ' + loginName);
+console.log('this.loginName: ' + this.loginName);
 console.log('-*-*-*- login page is here -*-*-*-');
 
 router.get('/', function(req, res, next) {

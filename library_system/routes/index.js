@@ -2,10 +2,9 @@ var express = require('express');
 const app = require('../app');
 var router = express.Router();
 
-let login = require('./login');
 let settings = require('../settings');
-
 let db = require('../db');
+let login = require('./login');
 
 console.log('index page is here');
 
@@ -30,7 +29,7 @@ router.post('/', function(req, res, next) {
   console.log('[this is index.js] login.HasPassed: ' + login.HasPassed);
 
   /* from login page */
-  if (login.HasPassed === false) {
+  if (login.HasPassed == false) {
     console.log('/----- index page -----');
     console.log("第1の post に対する処理(login page からの処理)をしています");
     login.HasPassed = true;
@@ -56,10 +55,12 @@ router.post('/', function(req, res, next) {
 
     console.log('/----- index page -----');
     console.log("第2の post に対する処理(books page の borrow button からの処理)をしています");
+    console.log('login.HasPassed: ' + login.HasPassed);
 
-    const sql0 = "UPDATE books SET user_info = ? WHERE id = ?";
-    const sql1 = "; UPDATE books SET info = 'borrowed' WHERE id = ?";
-    const sql2 = "; INSERT INTO history (history_id, book_id, book_title, user_id, user_name, borrow_datetime, info) VALUES (?, ?, ?, ?, ?, ?, ?)"; // history table の編集
+    const sql0 = "UPDATE books SET user_id = ? WHERE id = ?";
+    const sql1 = "UPDATE books SET user_name = ? WHERE id = ?";
+    const sql2 = "; UPDATE books SET info = 'borrowed' WHERE id = ?";
+    const sql3 = "; INSERT INTO history (history_id, book_id, book_title, user_id, user_name, borrow_datetime, deadline, info) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"; // history table の編集
 
     let historyId;
     let bookId = parseInt(req.body.book_name);
@@ -84,62 +85,69 @@ router.post('/', function(req, res, next) {
     console.log('utcBorrowDatetime: ' + utcBorrowDatetime);
     let formattedJstBorrowDatetime = momentTimezone(utcBorrowDatetime).tz('Asia/Tokyo').format('YYYY-MM-DD HH-mm-ss');
     console.log('formattedJstBorrowDatetime: ' + formattedJstBorrowDatetime);
+    let deadline = momentTimezone(utcBorrowDatetime).tz('Asia/Tokyo').add(14, 'd').format('YYYY-MM-DD');
+    console.log('deadline: ' + deadline);
 
     let info = 'borrowed';
-    // sql2
+    // sql3
     db.connection.query('SELECT * FROM history ORDER BY history_id DESC LIMIT 1', function(err, historyRow, fields) {
-      console.log('sql2');
+      console.log('sql3');
       if (err) {
         throw err;
       } else {
-        console.log('sql2 not error');
+        console.log('sql3 not error');
         //↓let historyId = db.hidtory.(last history_id)+1
         historyId = historyRow[0].history_id + 1;
+        console.log('historyRow: ' + historyRow);
+        console.log('historyRow[0].history_id: ' + historyRow[0].history_id);
         console.log('historyId: ' + historyId);
-      }
-    });
-    db.connection.query('SELECT * FROM books WHERE id = ?', [bookId], function(err, booksRow, fields) {
-      if (err) {
-        throw err;
-      } else {
-        bookTitle = booksRow[0].title;
-        console.log('bookTitle: ' + bookTitle);
-      }
-    });
-    db.connection.query('SELECT * FROM r_users WHERE name = ?', [login.Name], function(err, r_usersRow, fields) {
-      if (err) {
-        throw err;
-      } else {
-        userId = r_usersRow[0].id;
-        console.log('userId: ' + userId);
-      }
-    });
 
-    console.log('↓ mysql columns:');
-    console.log('historyId: ' + historyId);
-    console.log('bookId: ' + bookId);
-    console.log('bookTitle: ' + bookTitle);
-    console.log('userId: ' + userId);
-    console.log('userName: ' + userName);
-    console.log('formattedJstBorrowDatetime: ' + formattedJstBorrowDatetime);
-    console.log('info: ' + info);
-    console.log('----- index page -----/');
+        db.connection.query('SELECT * FROM books WHERE id = ?', [bookId], function(err, booksRow, fields) {
+          if (err) {
+            throw err;
+          } else {
+            bookTitle = booksRow[0].title;
+            console.log('bookTitle: ' + bookTitle);
 
-    //db.connection.query(sql, [login_name, book_id], function (err, rows, fields) {
-    // long. fix me
-    db.connection.query(sql0 + sql1 + sql2, [/* sql0 */login.Name, bookId, /* sql1 */bookId, /* sql2*/historyId, bookId, bookTitle, userId, userName, formattedJstBorrowDatetime, info], function (err, rows, fields) {
-      if (err) {
-        throw err;
-      } else {
-        res.render('index', {
-          title: settings.title,
-          login: settings.login,
-          index: settings.index,
-          books: settings.books,
-          users: settings.users,
-          history: settings.history,
-          result: settings.result,
-          libraryName: settings.libraryName
+            db.connection.query('SELECT * FROM r_users WHERE name = ?', [login.Name], function(err, r_usersRow, fields) {
+              if (err) {
+                throw err;
+              } else {
+                userId = r_usersRow[0].id;
+                console.log('userId: ' + userId);
+
+                console.log('↓ mysql columns:');
+                console.log('historyId: ' + historyId);
+                console.log('bookId: ' + bookId);
+                console.log('bookTitle: ' + bookTitle);
+                console.log('userId: ' + userId);
+                console.log('userName: ' + userName);
+                console.log('formattedJstBorrowDatetime: ' + formattedJstBorrowDatetime);
+                console.log('deadline: ' + deadline);
+                console.log('info: ' + info);
+                console.log('----- index page -----/');
+
+
+                // long. fix me
+                db.connection.query(sql0 + sql1 + sql2 + sql3, [/* sql0 */userId, bookId, /* sql1 */login.Name, bookId, /* sql2 */bookId, /* sql3*/historyId, bookId, bookTitle, userId, userName, formattedJstBorrowDatetime, deadline, info], function (err, rows, fields) {
+                  if (err) {
+                    throw err;
+                  } else {
+                    res.render('index', {
+                      title: settings.title,
+                      login: settings.login,
+                      index: settings.index,
+                      books: settings.books,
+                      users: settings.users,
+                      history: settings.history,
+                      result: settings.result,
+                      libraryName: settings.libraryName
+                    });
+                  }
+                });
+              }
+            });
+          }
         });
       }
     });

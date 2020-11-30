@@ -2,9 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 let settings = require('../settings');
-let index = require('./index');
-
 let db = require('../db');
+let login = require('./login');
 
 console.log('books page is here');
 
@@ -15,8 +14,8 @@ router.get('/', function(req, res, next) {
     } else {
 
       console.log('/----- books page -----');
-      console.log('loginHasPassed: ' + loginHasPassed);
-      console.log('loginName: ' + loginName);
+      console.log('login.HasPassed: ' + login.HasPassed);
+      console.log('login.Name: ' + login.Name);
       console.log('----- books page -----');
 
       res.render('books', {
