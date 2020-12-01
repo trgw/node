@@ -1,0 +1,34 @@
+.borrowing_books {
+  background-color: #A9A9A9;
+}
+
+.link {
+  background-color: #A9A9A9;
+  padding-top: 10px;
+}
+
+.link > div {
+  text-align: right;
+}
+
+.output {
+  height: auto;
+  padding-bottom: 20px;
+}
+
+p {
+  margin: 0;
+  text-align: center;
+}
+
+table {
+  margin-top: 24px;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid #333;
+}

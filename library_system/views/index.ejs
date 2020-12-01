@@ -22,8 +22,11 @@
           <button onclick="location.href='<%= result %>'">search</button>
         </form>
       </div>
-      <div class="return">
-        <a href=<%= return %>>came here to return</a>
+      <div class="returnn">
+        <form method="post" name="form_returnn" id="user_id" action=<%= returnn %>>
+          <input type="hidden" name="user_name" id="user_id" value=<%= userId %>>
+          <a href="javascript:form_returnn.submit()">came to return</a>
+        </form>
       </div>
     </div>
   </section>

@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
     users: settings.users,
     history: settings.history,
     result: settings.result,
-    return: settings.return,
+    returnn: settings.returnn,
     libraryName: settings.libraryName
   });
 });
@@ -37,20 +37,29 @@ router.post('/', function(req, res, next) {
     console.log('login.HasPassed: ' + login.HasPassed);
     login.Name = req.body.input_login_name;
     console.log('login.Name: ' + login.Name);
+    console.log('settings.returnn: ' + settings.returnn);
     console.log('----- index page -----/');
 
-    res.render('index', {
-      title: settings.title,
-      login: settings.login,
-      index: settings.index,
-      books: settings.books,
-      users: settings.users,
-      history: settings.history,
-      result: settings.result,
-      return: settings.return,
-      libraryName: settings.libraryName
-    });
+    db.connection.query('SELECT * FROM r_users WHERE name = ?', [login.Name], function(err, r_usersRow, fields) {
+      if (err) {
+        throw err;
+      } else {
+        userId = r_usersRow[0].id;
 
+        res.render('index', {
+          title: settings.title,
+          login: settings.login,
+          index: settings.index,
+          books: settings.books,
+          users: settings.users,
+          history: settings.history,
+          result: settings.result,
+          returnn: settings.returnn,
+          libraryName: settings.libraryName,
+          userId: userId  
+        });
+      }
+    });
 
     /* from books page (borrow button)*/
   } else {
@@ -143,7 +152,7 @@ router.post('/', function(req, res, next) {
                       users: settings.users,
                       history: settings.history,
                       result: settings.result,
-                      return: settings.return,
+                      returnn: settings.returnn,
                       libraryName: settings.libraryName
                     });
                   }

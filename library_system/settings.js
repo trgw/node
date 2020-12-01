@@ -7,5 +7,5 @@ exports.books = this.index + "/books";
 exports.users = this.index + "/users";
 exports.history = this.index + "/history";
 exports.result = this.index + "/result";
-exports.return = this.index + "/return";
+exports.returnn = this.index + "/return";
 exports.libraryName = 'ubiquitous library';

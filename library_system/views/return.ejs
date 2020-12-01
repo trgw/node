@@ -20,6 +20,40 @@
     </div>
   </section>
 
+  <section class="borrowing_books">
+    <div class="output">
+      <p>borrowing books</p>
+      <table>
+        <tr class="column">
+          <td>id</td>
+          <td>title</td>
+          <td>author</td>
+          <td>genre</td>
+          <td>height</td>
+          <td>publisher</td>
+          <td>return</td>
+        </tr>
+        <% for (let i = 0; i < content.length; i++) { %>
+          <tr>
+            <td><%= content[i].id %></td>
+            <td><%= content[i].title %></td>
+            <td><%= content[i].author %></td>
+            <td><%= content[i].genre %></td>
+            <td><%= content[i].height %></td>
+            <td><%= content[i].publisher %></td>
+            <td class="history">
+              <div>
+                <form method="post" id="book_id" action=<%= returnn %>>
+                  <button onclick="location.href='<%= returnn %>'" name="book_name" id="book_id" value="<%= content[i].id %>">return</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        <% } %>
+      </table>
+    </div>
+  </section>
+
   <footer>
     <div>
       <p><%= libraryName %></p>
