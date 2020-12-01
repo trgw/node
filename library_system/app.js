@@ -1,5 +1,5 @@
 
-console.log('the top of app.js');
+console.log('the top of app.js.');
 
 const createError = require('http-errors');
 const express = require('express');
