@@ -1,9 +1,9 @@
 const mysql = require("mysql2");
 
 exports.connection = mysql.createConnection({
-  host: '192.168.1.182',
-  user: "library_server",
+  host: '192.168.******',
+  user: "***",
   database: "library",
-  password: "ubiq2005tech_5_virtual",
+  password: "******",
   multipleStatements: true
 });
