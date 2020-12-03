@@ -2,7 +2,7 @@ exports.server_port = 1337;
 exports.server_host = '192.168.33.13';
 exports.title = 'A Library';
 exports.index = "http://" + this.server_host + ":" + String(this.server_port);
-console.log(this.index);
+//console.log(this.index);
 exports.login = this.index + "/login";
 exports.books = this.index + "/books";
 exports.users = this.index + "/users";
