@@ -1,0 +1,99 @@
+システムの実行まで
+
+1. Oracle VirtualBox https://www.oracle.com/jp/virtualization/technologies/vm/downloads/virtualbox-downloads.html をインストール(64ビット Windowsインストーラ)
+
+2. Vagrant https://www.vagrantup.com/ をインストール(ダウンロード)
+
+3. リモートログオンターミナルクライアントソフト PuTTY https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html をインストール(MSI 64bit)
+
+4. ファイル管理ツール Cyberduck https://cyberduck.io/download/ をインストール（ダウンロード）
+
+5. 適当に仮想環境用のフォルダを作成する（私の場合、\C:/Users/user/MyVagrant と作成）
+
+6. 5. で作ったフォルダにプロジェクトのフォルダを作成する(\C:/Users/user/MyVagrant/MyProject とする)
+
+7. PowerShell を開いてコマンド `cd MyVagrant` → `cd MyProject` と入力してディレクトリを変更する
+
+8. 変更先のディレクトリでコマンド `vagrant init bento/centos-8.2` によりCentOSをインストールする（場合によってバージョンを変える）
+
+9. `vagrant up` により vagrant を起動する
+
+10. 立ち上がったら PuTTY を起動する。Vagrant のプライベートIPアドレスである 192.168.33.10 を Host Name (or IP address) に入力する（プロジェクトを変えるたびに最後の数値10 を 11. 12, 13, ... と変えていく）。Port番号は 22 のままでよい。
+
+11. save しておいて、以降も使いやすくしておく。
+
+12. open を押下する
+
+13. 名前（login as: ）、パスワード共に vagrant で入ることができる。
+
+14. Cyberduck を開いて新規接続を押す
+
+15. 転送プロトコルを SFTP(SSHによる暗号化FTP) に変更する
+
+16. サーバ：　の欄に 10. で設定したIPアドレス（192.168.33.10）を入力する
+
+17. ポート番号を 22 に設定する
+
+18. ユーザ名は vagrant とする
+
+19. パスワードも vagrant とする
+
+20. Cyberduck で表示されるプロジェクトのディレクトリ内 /home/vagrant 内に project 等の名前でフォルダを作成する(適宜名前変更)
+
+21. git などを用いて /home/vagrant/project 内に library_system のフォルダをインポートする
+
+22. node_modules のフォルダと package-json のファイルを削除する
+
+23. PuTTY  (/home/vagrant/project/)library_system の（と表示される）場所でコマンド `sudo dnf install -y nodejs` により Node.js をインストール
+
+24. 続いて `npm install` により npm(Node.js package manager) をインストール
+
+25. 続いて `npm install mysql2`, `npm install date-utils`, `npm install moment-timezone` と各種 package をインストール
+
+26. settings.js の IP address を変更(port 番号を含む)
+
+27. `npm start` で実行できる
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
